@@ -1,13 +1,42 @@
-# Twitch Count Bot 
+# Twitch  Bot  - RoundWon specific flavors
 
-Follow me: [![`[YouTube]`](https://img.shields.io/youtube/channel/subscribers/UClinoEvnpv_TzF4HNNaE5cQ?style=social)](https://youtube.com/k0nze) | [![`[Twitch]`](https://img.shields.io/twitch/status/k0nze?style=social)](https://twitch.com/k0nze) | [![`[Discord]`](https://img.shields.io/discord/713121297407672380.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.k0nze.gg) | [![`[Twitter Follow]`](https://img.shields.io/twitter/follow/k0nze_gg?style=social)](https://twitter.com/k0nze_gg)
+The following repo intends to build upon the boiler plate code kindly provided by the repository we forked from. Included is also a very helpful Youtube video who walks you through some first steps on setting up a Rasberry Pi to run this bot if you need tha help.
 
-Simple Twitch bot template with three commands:
 
- * `!count`: shows the `count` from [`data.json`](./data.json)
- * `!add NUMBER`: adds `NUMBER` to `count` in  [`data.json`](./data.json)
- * `!sub NUMBER`: subtracts `NUMBER` from `count` in  [`data.json`](./data.json)
 
+Simple Twitch bot template with following commands:
+#### Original K0nze commands - modified for my needs
+ * `!counts`: shows the `count` from [`data.json`](./data.json)
+ * `!add <NUMBER>`: adds `NUMBER` to `count` in  [`data.json`](./data.json). Available to mods only
+ * `!sub <NUMBER>`: subtracts `NUMBER` from `count` in  [`data.json`](./data.json). Available to mods only
+
+ ### New RoundWon commands
+ * `!joke`: returns a random chuck norris joke - is also called every 10 chats
+ * `!help`: returns the available functions in the bot
+ * `!rules`: returns the chat rules
+ * `!available`: returns a list of games I have availble to play - linked to Game_Meta table which tracks games that have been downloaded and games that have not.
+ * `!add-game <NUMBER>`: adds a game request to the GameRequest table. Chatters are limited to being able to add a game request every 5 minutes. The counts of each game are used to update the TopGames count table and use the top 2 most voted games as options in the next poll. -- command currently being tested
+ * `!poll-game`: Pulls from a table linked to Twitch Schedule (script to pull Twitch Schedule and map to Database to be provided) and creates a poll on StrawPolls using API connnection. Once poll is created, url is updated into StrawPolls table and linked to schedule_id. Only broadcaster can run this.
+ * `!poll-available`: Retrieves the available Polls in StrawPoll database and the current results for each poll. Only Mods can run this. Is also run every 20 chat messages before reverting the count to 0 again.
+ * `!poll-announce <NUMBER>`: Announces the available poll every 30 minutes for a number of times specified by the broadcaster. After the end of the routine, the script closes the poll ( by first determining if the target_game changes. Currently script also automatically deletes the poll but in future iterations, will allow polls to remain for 1 day lag.
+
+
+
+
+## Next Steps
+
+Spam moderation scripts are currently being engineered though likely to be handled by a second bot. Additional routines to retrieve different types of jokes and facts to help boost chat engagement will be pursued after all poll related scripts testing and deployment is finalized.
+
+
+
+
+
+
+
+
+
+
+# Instructions from original repo - helpful 
 ## Setup Video
 <a href="https://youtu.be/CPVSoowZhVw">
     <img src="./images/youtube_thumbnail.png" width="500"/>
@@ -95,6 +124,9 @@ sudo systemctl enable twitch_count_bot.service
 ```
 
 ## Credits
+
+Follow the creator of original repo at the following links: [![`[YouTube]`](https://img.shields.io/youtube/channel/subscribers/UClinoEvnpv_TzF4HNNaE5cQ?style=social)](https://youtube.com/k0nze) | [![`[Twitch]`](https://img.shields.io/twitch/status/k0nze?style=social)](https://twitch.com/k0nze) | [![`[Discord]`](https://img.shields.io/discord/713121297407672380.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.k0nze.gg) | [![`[Twitter Follow]`](https://img.shields.io/twitter/follow/k0nze_gg?style=social)](https://twitter.com/k0nze_gg)
+
 ![K0nze Logo](./images/k_logo_30x30.png "Logo") Created by Konstantin (Konze) Lübeck
 
  * Discord: [discord.k0nze.gg](https://discord.k0nze.gg) 
