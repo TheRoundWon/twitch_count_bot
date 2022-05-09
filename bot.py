@@ -2,6 +2,13 @@
 # -*- coding: utf-8 -*-
 
 
+__author__      = "Avik (TheRoundWon) Chowdhury"
+__copyright__   = "Copyright 2022, Twitch RoundWon_Bot"
+__credits__     = ["NinjaBunny9000: https://github.com/NinjaBunny9000/barebones-twitch-bot", "k0nze: https://github.com/k0nze/twitch_count_bot"]
+
+__license__     = "BSD 3-Clause License"
+__version__     = "0.1"
+
 from email.mime import base
 import os
 import json
@@ -14,7 +21,7 @@ from twitchio.ext import commands
 import requests
 import json
 from BotMaster import *
-from TwitchMaster import *
+from StreamMaster import *
 import asyncio
 import pandas as pd
 
