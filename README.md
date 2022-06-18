@@ -1,7 +1,8 @@
 # Twitch  Bot  - RoundWon specific flavors
 
-The following repo intends to build upon the boiler plate code kindly provided by the repository we forked from. Included is also a very helpful Youtube video who walks you through some first steps on setting up a Rasberry Pi to run this bot if you need tha help.
+The following repo intends to build upon the boiler plate code kindly provided by the repository we forked from. Included is also a very helpful Youtube video from the developer who created the boilerplate code walks you through some first steps on setting up a Rasberry Pi to run this bot if you need tha help.
 
+The first section details significant advancements which were made to the original boiler plate code which allows for administering "power" abilities onto your users and adding additional commands which can link to  other 
 
 
 Simple Twitch bot template with following commands:
